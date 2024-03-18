@@ -1,0 +1,12 @@
+CREATE TABLE `top_charted_tracks` (
+  `track` text,
+  `artist` text,
+  `artist_count` int, 
+  `released_year` int,
+  `released_month` int,
+  `released_day` int,
+  `in_spotify_playlists` int,
+  `in_spotify_charts` int,
+  `streams` int,
+  `in_apple_playlists` int,
+  `in_apple_charts` int
