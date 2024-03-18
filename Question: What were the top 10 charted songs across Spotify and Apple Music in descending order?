@@ -1,0 +1,6 @@
+SELECT *
+FROM spotify.top_charted_tracks
+ORDER BY streams Desc
+Limit 10;
+
+--see top10streams.png--
