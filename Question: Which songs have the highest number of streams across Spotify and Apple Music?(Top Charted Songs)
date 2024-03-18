@@ -10,3 +10,4 @@ CREATE TABLE `top_charted_tracks` (
   `streams` int,
   `in_apple_playlists` int,
   `in_apple_charts` int
+--see topchartedtracks.png--
