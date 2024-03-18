@@ -1,5 +1,5 @@
 # Streamed Songs Database Project
-This is a small project showcasing basic MySQL skills. The project involves analyzing a database containing information about streamed songs from various platforms such as Apple Music, Spotify, and others.
+This is a small project showcasing basic MySQL skills. The project involves analyzing a database containing information about streamed songs from various platforms such as Apple Music, Spotify, and others. I used the "spotifysongs-3.csv" for this project. It is a simplied version from original data set and now consits of 106 songs.
 
 # Project Overview
 The primary goal of this project is to demonstrate proficiency in SQL by querying and analyzing a dataset of streamed songs. The dataset includes information such as song name, artist, streams on Spotify, streams on Apple Music, release year, and more.
