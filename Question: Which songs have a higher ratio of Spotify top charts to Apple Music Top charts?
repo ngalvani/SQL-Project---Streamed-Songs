@@ -30,4 +30,4 @@ WHERE
 ORDER by spotify_to_apple_ratio DESC
 Limit 25;
 
---view "songsratio.png"--
+--see "songsratio.png"--
