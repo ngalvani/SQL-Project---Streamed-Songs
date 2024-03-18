@@ -1,0 +1,33 @@
+--since i don't have data for which songs were streamed in each service, i went with which songs were top charted songs for each service--
+-- i put songs in descending order and limited to top 25--
+
+CREATE TABLE ratio_songs AS
+SELECT 
+    s.artist,
+    s.in_spotify_charts,
+    s.track,
+    s.in_spotify_charts / NULLIF(a.in_apple_charts, 0) AS spotify_to_apple_ratio,
+    a.in_apple_charts
+FROM 
+    spotify_charts s
+JOIN 
+    apple_charts a ON s.track = a.track
+WHERE 
+    s.in_spotify_charts / NULLIF(a.in_apple_charts, 0) > 1
+UNION
+SELECT 
+    a.artist,
+    a.in_apple_charts,
+    a.track,
+    a.in_apple_charts / NULLIF(s.in_spotify_charts, 0) AS spotify_to_apple_ratio,
+    s.in_spotify_charts
+FROM 
+    apple_charts a
+JOIN 
+    spotify_charts s ON a.track = s.track
+WHERE 
+    a.in_apple_charts / NULLIF(s.in_spotify_charts, 0) > 1
+ORDER by spotify_to_apple_ratio DESC
+Limit 25;
+
+--view "songsratio.png"--
