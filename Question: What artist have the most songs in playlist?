@@ -1,0 +1,46 @@
+-- What artist have the most songs in playlist?
+
+-- Count the number of songs per artist for Apple Music
+SELECT artist, COUNT(*) AS apple_song_count
+FROM most_apple_playlist_songs
+GROUP BY artist;
+
+-- Count the number of songs per artist for Spotify
+SELECT artist, COUNT(*) AS spotify_song_count
+FROM most_spotify_playlist_songs
+GROUP BY artist;
+
+-- Join the results and determine the artist with the most songs
+SELECT artist, MAX(total_song_count) AS max_song_count
+FROM (
+    SELECT artist, COUNT(*) AS total_song_count
+    FROM most_apple_playlist_songs
+    GROUP BY artist
+    
+    UNION ALL
+    
+    SELECT artist, COUNT(*) AS total_song_count
+    FROM most_spotify_playlist_songs
+    GROUP BY artist
+) AS combined_counts
+GROUP BY artist;
+
+
+-- Create a table based on the results
+CREATE TABLE most_songs_per_artist AS
+SELECT artist, MAX(total_song_count) AS max_song_count
+FROM (
+    SELECT artist, COUNT(*) AS total_song_count
+    FROM most_apple_playlist_songs
+    GROUP BY artist
+    
+    UNION ALL
+    
+    SELECT artist, COUNT(*) AS total_song_count
+    FROM most_spotify_playlist_songs
+    GROUP BY artist
+) AS combined_counts
+GROUP BY artist
+Order By max_song_count DESC;
+
+--see mostsongsperartist.png--
